@@ -15,7 +15,7 @@ app.get("/", async (req, res) => {
 
   try {
     // REAL API (hidden)
-    const apiUrl = `https://zeus-num-info.vercel.app/?num=${num}`;
+    const apiUrl = `https://jai-mahakaal.vercel.app/vehicle-api?reg=${num}`;
 
     const response = await fetch(apiUrl);
     let data = await response.text();
