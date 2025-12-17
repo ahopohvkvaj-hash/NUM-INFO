@@ -1,5 +1,5 @@
 {
-  "name": "veerxxhelper-proxy",
+  "name": "veerxxhelper-vehicle-api",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
