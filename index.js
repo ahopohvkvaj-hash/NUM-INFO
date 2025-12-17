@@ -4,33 +4,34 @@ const fetch = require("node-fetch");
 const app = express();
 
 app.get("/", async (req, res) => {
-  const num = req.query.num;
+  const reg = req.query.reg;
 
-  if (!num) {
+  if (!reg) {
     return res.json({
-      error: "num parameter missing",
-      user: "@veerxxhelper"
+      error: "reg parameter missing",
+      developer: "@veerxxhelper"
     });
   }
 
   try {
-    // REAL API (hidden)
-    const apiUrl = `https://jai-mahakaal.vercel.app/vehicle-api?reg=${num}`;
+    const realApi = `https://jai-mahakaal.vercel.app/vehicle-api?reg=${reg}`;
 
-    const response = await fetch(apiUrl);
-    let data = await response.text();
+    const response = await fetch(realApi);
+    const data = await response.json();
 
-    // username replace
-    data = data.replace(/pluggerpy/gi, "@veerxxhelper");
+    // Filtered custom response
+    const finalResponse = {
+      reg_no: data.reg_no || reg,
+      mobile_no: data.mobile_no || "not_found",
+      developer: "@veerxxhelper"
+    };
 
-    // send modified response
-    res.setHeader("Content-Type", "application/json");
-    res.send(data);
+    res.json(finalResponse);
 
   } catch (err) {
     res.json({
       error: "API fetch failed",
-      user: "@veerxxhelper"
+      developer: "@veerxxhelper"
     });
   }
 });
