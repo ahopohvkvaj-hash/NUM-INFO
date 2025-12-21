@@ -1,7 +1,7 @@
 {
   "name": "veerxxhelper-num-info-api",
   "version": "1.0.0",
-  "description": "Proxy API to hide real number API and replace username",
+  "description": "num to info",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
