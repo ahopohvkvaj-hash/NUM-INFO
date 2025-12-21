@@ -6,7 +6,7 @@ const app = express();
 app.get("/", async (req, res) => {
   const number = req.query.number;
 
-  if (!number) {
+  if (!num) {
     return res.json({
       error: "number parameter missing",
       developer: "@veerxxhelper"
@@ -14,7 +14,7 @@ app.get("/", async (req, res) => {
   }
 
   try {
-    const realApi = `https://meowmeow.rf.gd/gand/intelxgroup.php?number=${number}`;
+    const realApi = `https://dark-trace-networks.vercel.app/api?key=DarkTrace_Network&type=mobile&term=${num}`;
 
     const response = await fetch(realApi);
     let data = await response.text();
