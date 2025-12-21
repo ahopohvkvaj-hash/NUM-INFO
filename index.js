@@ -4,29 +4,26 @@ const fetch = require("node-fetch");
 const app = express();
 
 app.get("/", async (req, res) => {
-  const reg = req.query.reg;
+  const number = req.query.number;
 
-  if (!reg) {
+  if (!number) {
     return res.json({
-      error: "reg parameter missing",
+      error: "number parameter missing",
       developer: "@veerxxhelper"
     });
   }
 
   try {
-    const realApi = `https://jai-mahakaal.vercel.app/vehicle-api?reg=${reg}`;
+    const realApi = `https://meowmeow.rf.gd/gand/intelxgroup.php?number=${number}`;
 
     const response = await fetch(realApi);
-    const data = await response.json();
+    let data = await response.text();
 
-    // Filtered custom response
-    const finalResponse = {
-      reg_no: data.reg_no || reg,
-      mobile_no: data.mobile_no || "not_found",
-      developer: "@veerxxhelper"
-    };
+    // 🔥 UPDATED username replace
+    data = data.replace(/@frappeash/gi, "@veerxxhelper");
 
-    res.json(finalResponse);
+    res.setHeader("Content-Type", "application/json");
+    res.send(data);
 
   } catch (err) {
     res.json({
